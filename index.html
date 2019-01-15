@@ -200,19 +200,48 @@ body {font-size:16px;}
 		systems do not take such instances into consideration and flood
 		the developer with reports of benign integer errors.
 		<br />
-		In IntFlow, we propose a compiler extension that differentiates
-		between reports of real bugs that might be exploitable, and
-		reports of developer-intented standard violations. This is
-		achieved by distinguishing <em>critical</em> integer errors:
-		errors whose operands originate from untrusted sources (e.g.,
-		files) or whose result propagates to a sensitive program
-		location (e.g., <tt>malloc()</tt>).
+		In IntFlow, we propose a compiler extension for the LLVM
+		compiler which differentiates between reports of real bugs that
+		might be exploitable, and reports of developer-intented
+		standard violations. This is achieved by distinguishing
+		<em>critical</em> integer errors: errors whose operands
+		originate from untrusted sources (e.g., files) or whose result
+		propagates to a sensitive program location (e.g.,
+		<tt>malloc()</tt>).
 		<br />
 		<br />
 		<img src="img/sources.png" class="center">
 		<br />
 		<br />
-
+		Intflow first employs <a href="http://www.cs.utah.edu/~regehr/papers/overflow12.pdf">IOC</a>
+		to instrument every integer operation with checks that trigger
+		warnings when (at runtime) an arithmetic error occurs. It then
+		utilizes static <em>information flow tracking</em>
+		(specifically the <a href="https://github.com/thinkmoore/llvm-deps">llvm-deps</a> 
+		compiler pass) to eliminate checks which originate from trusted sources
+		or that flow to non-sensitive sinks. IntFlow offers three modes of operation:
+		<ul>
+		<li> hi
+		</li>
+		
+		
+		Concretely, starting from
+		a source IntFlow performs <em>forward slicing</em> to find
+		all integer operations affected by it. It then examines their
+		results to identify if any of them flow to a sensitive sink. If
+		such a sink is found, it performs <em>backward slicing</em>
+		until it reaches the source, therefore verifying the validity
+		of the flow. In this case, it retains the IOC check, otherwise
+		it discards it. <br />
+		Since the detection of the errors occurs at runtime, developers
+		are then asked to execute the augmented binary with a broad
+		range of inputs to exercise as many paths as possible.
+		<br />
+		<br />
+		<img src="img/intflow.png" class="center">
+		<br />
+		<br />
+		Finally, IntFlow provides three 
 		</p>
 	 </div>
   </div>
