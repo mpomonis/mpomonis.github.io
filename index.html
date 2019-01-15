@@ -136,7 +136,46 @@ body {font-size:16px;}
 
   <div class="w3-container" id="krx" style="margin-top:75px">
 	  <div class="w3-light-grey">
-		  <h2 class="w3-xxxlarge w3-text-blue-gray">kR^X</h2>
+		<h2 class="w3-xxxlarge w3-text-blue-gray">kR^X</h2>
+		<p>
+		The OS kernel has always been a compelling target for attackers. After the introduction of defenses (e.g., SMEP, SMAP) that prevent the use of exploits based on the ret2usr methodology, attackers were forced to 
+		retrofit techniques originally designed for user space
+		exploitation, such as Just-In-Time Code Reuse, to read the code section and construct their exploits on the fly therefore bypassing existing kernel
+		hardening mechanisms.
+		<br \> 
+		In kR^X, we propose a novel self-protection defense system based on
+		compiler-assisted instrumentation mechanisms and code diversification.
+		Specifically, kR^X first modifies the kernel memory layout to separate the code
+		and data into two disjoint regions, placing the code on the top of the address
+		space.
+		<br \>
+		<br \>
+		<img src="img/krx_kas_amd64.png" class="center">
+		<br \>
+		<br \>
+		It then utilizes the GCC plugin interface to instrument every memory read with
+		SFI-inspired range checks that enforce the Execute-Only primitive on the code
+		section. Due to the large number of memory reads in the kernel code, kR^X makes
+		sure to perform a series of safe optimizations to minimize both the number of
+		instruction in every check and the number of checks emitted.
+		Moreover, on modern Intel CPUs kR^X takes advantage of Intel MPX, to further reduce the runtime overhead of the instrumentation. 
+		<br \>
+		<br \>
+		<img src="img/krx_sfi_mpx.png" width="750" height="356" class="center">
+		<br \>
+		<br \>
+		The above guarantee that an attacker is unable to read the kernel code section and identify the addresses of gadgets, effectively preventing them from constructing exploits on-the-fly.
+		<br \>
+		Finally, it diversifies the code layout and protects return addresses through
+		encryption or deception. When performing code diversification, kR^X randomizes on
+		code block level and function level thus rendering both the internal and the
+		function layout unpredictable. This is necessary to thwart exploits that employ
+		gadgets at pre-computed addresses. Regarding return address protection, kR^X either emits a unique and unpredictable per-routine key which is used to XOR-encrypt/decrypt return addresses at function prologue/epilogue, or "hides" the return address among fake (decoy) ones that trigger exceptions when used as part of a code reuse exploits.
+		<br \>
+		kR^X incurs small runtime overhead on real world applications, which ranges from 4.04% on legacy CPUs to 2.32% when MPX is available. The following table reports the runtime overhead of the SFI-inspired instrumentation (SFI), the MPX-based instrumentation (MPX), and the respective instrumentations in addition to the code diversification and return address encryption (SFI+X, MPX+X), and in addition to the code diversification and return address deception (SFI+D, MPX+D).
+		<br \>
+		<br \>
+		<img src="img/krx_runtime.png" class="center">
 	  </div>
   </div>
 
