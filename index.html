@@ -10,6 +10,11 @@ img.resize {
 	max-width:90%;
 	max-height:90%;
 }
+img.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 </style>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
@@ -161,7 +166,7 @@ body {font-size:16px;}
 		Moreover, on modern Intel CPUs kR^X takes advantage of Intel MPX, to further reduce the runtime overhead of the instrumentation. 
 		<br \>
 		<br \>
-		<img src="img/krx_sfi_mpx.png" width="750" height="356" class="center">
+		<img src="img/krx_sfi_mpx.png" class="center"> <!-- width="750" height="356" -->
 		<br \>
 		<br \>
 		The above guarantee that an attacker is unable to read the kernel code section and identify the addresses of gadgets, effectively preventing them from constructing exploits on-the-fly.
