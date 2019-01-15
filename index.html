@@ -181,6 +181,28 @@ body {font-size:16px;}
 		the aforementioned code pointers to the protected region, thus protecting them from leakage or corruption. Finally, to prevent attackers from accessing code pointers through page table manipulation,
 		kSplitStack employs a self-protection mechanism to protect page table entries, based on toggling the CPU write-protection.
 		</p>
+		<p>kSplitStack is an ongoing work that is going to be submitted for publication soon.</p>
+	 </div>
+  </div>
+
+  <!-- IntFlow -->
+  <div class="w3-container" id="intflow" style="margin-top:75px">
+	  <div class="w3-light-grey">
+		<h2 class="w3-xxxlarge w3-text-blue-gray">IntFlow</h2>
+		<p>
+		<img src="img/ksplitstack.png" width="225" height="414" class=center >
+		kSplitStack thwarts the construction of kernel code reuse exploits by "hiding" kernel code pointers.
+		The fundamental concept of kSplitStack is the <em>protected region</em>, a part of the address space
+		that attackers can neither read nor write. kSplitStack then
+		ensures that return addresses are emitted in the protected
+		region in a race-free manner, through the use of code
+		instrumentation (both at compile and assembler level). In addition,
+		it re-purposes the Interrupt Stack Table (IST) hardware
+		feature of the x86-64 architecture to protect code pointers in interrupt context. 
+		Specifically, it uses the IST to force the hardware to emit
+		the aforementioned code pointers to the protected region, thus protecting them from leakage or corruption. Finally, to prevent attackers from accessing code pointers through page table manipulation,
+		kSplitStack employs a self-protection mechanism to protect page table entries, based on toggling the CPU write-protection.
+		</p>
 	 </div>
   </div>
 
