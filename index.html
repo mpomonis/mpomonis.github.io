@@ -103,11 +103,11 @@ body {font-size:16px;}
       </div>
     </div>
     <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
+      <div class="w3-light-grey" style="cursor: pointer;" onclick="window.location='#intflow';">
         <img src="img/intflow.png" alt="IntFlow" style="width:100%;height:100%">
         <div class="w3-container">
           <h3>IntFlow</h3>
-          <p>IntFlow is a compiler extension that distinguishes &mdash;real potentially exploitable&mdash; bugs from benign, programmer-intended integer error reports. It employs static information flow tracking.</p>
+          <p>IntFlow is a compiler extension that distinguishes real &mdash;potentially exploitable&mdash; bugs from benign, programmer-intended integer error reports. It employs static information flow tracking.</p>
         </div>
       </div>
     </div>
@@ -167,8 +167,8 @@ body {font-size:16px;}
   <div class="w3-container" id="ksplitstack" style="margin-top:75px">
 	  <div class="w3-light-grey">
 		<h2 class="w3-xxxlarge w3-text-blue-gray">kSplitStack</h2>
-		<p>
 		<img src="img/ksplitstack.png" width="225" height="414" class=center >
+		<p>
 		kSplitStack thwarts the construction of kernel code reuse exploits by "hiding" kernel code pointers.
 		The fundamental concept of kSplitStack is the <em>protected region</em>, a part of the address space
 		that attackers can neither read nor write. kSplitStack then
@@ -190,18 +190,25 @@ body {font-size:16px;}
 	  <div class="w3-light-grey">
 		<h2 class="w3-xxxlarge w3-text-blue-gray">IntFlow</h2>
 		<p>
-		<img src="img/ksplitstack.png" width="225" height="414" class=center >
-		kSplitStack thwarts the construction of kernel code reuse exploits by "hiding" kernel code pointers.
-		The fundamental concept of kSplitStack is the <em>protected region</em>, a part of the address space
-		that attackers can neither read nor write. kSplitStack then
-		ensures that return addresses are emitted in the protected
-		region in a race-free manner, through the use of code
-		instrumentation (both at compile and assembler level). In addition,
-		it re-purposes the Interrupt Stack Table (IST) hardware
-		feature of the x86-64 architecture to protect code pointers in interrupt context. 
-		Specifically, it uses the IST to force the hardware to emit
-		the aforementioned code pointers to the protected region, thus protecting them from leakage or corruption. Finally, to prevent attackers from accessing code pointers through page table manipulation,
-		kSplitStack employs a self-protection mechanism to protect page table entries, based on toggling the CPU write-protection.
+		Arithmetic operations that lead to integer errors, such as
+		integer overflows or signedness conversion, are often an
+		integral part of exploits. Despite the development of a number
+		of testing and reporting systems, integer errors are still a
+		problem. One of the main reasons is that often developers
+		<em>intentionally</em> use constructs that violate the language standards
+		for performance or portability reasons. Unfortunately, testing
+		systems do not take such instances into consideration and flood
+		the developer with reports of benign integer errors.
+		</p>
+		<p>
+		In IntFlow, we propose a compiler extension that differentiates
+		between reports of real bugs that might be exploitable, and
+		reports of developer-intented standard violations. This is
+		achieved by distinguishing <em>critical</em> integer errors:
+		errors whose operands originate from untrusted sources (e.g.,
+		files) or whose result propagates to a sensitive program
+		location (e.g., <tt>malloc()</tt>).
+		<img src="img/sources.png" class=center>
 		</p>
 	 </div>
   </div>
