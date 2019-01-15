@@ -221,18 +221,16 @@ body {font-size:16px;}
 		compiler pass) to eliminate checks which originate from trusted sources
 		or that flow to non-sensitive sinks. IntFlow offers three modes of operation:
 		<ul>
-		<li> hi
-		</li>
-		
-		
-		Concretely, starting from
-		a source IntFlow performs <em>forward slicing</em> to find
-		all integer operations affected by it. It then examines their
-		results to identify if any of them flow to a sensitive sink. If
-		such a sink is found, it performs <em>backward slicing</em>
-		until it reaches the source, therefore verifying the validity
-		of the flow. In this case, it retains the IOC check, otherwise
-		it discards it. <br />
+			<li><em>Blacklisting</em> mode: IntFlow identifies all integer operations whose operands originate from untrusted sources and retains their checks, while removing all other checks.</li>
+			<li><em>Whitelisting</em> mode: IntFlow identifies all integer operations whose operands originate from trusted sources and eliminates their checks, while retaining all other checks.</li>
+			<li><em>Sensitive</em> mode: Intflow identifies all integer operations whose result propages to sensitive sinks and retains their checks, while removing all other checks.</li>
+		</ul>
+		Concretely, starting from a source (either an input source or
+		an integer operation when in sensitive mode) IntFlow performs
+		<em>forward slicing</em> to find interesting sinks. If such a
+		sink is identified, it performs <em>backward slicing</em> to
+		verify the validity of the flow and perform the appropriate
+		action, depending on the mode of operation. <br />
 		Since the detection of the errors occurs at runtime, developers
 		are then asked to execute the augmented binary with a broad
 		range of inputs to exercise as many paths as possible.
@@ -241,8 +239,19 @@ body {font-size:16px;}
 		<img src="img/intflow.png" class="center">
 		<br />
 		<br />
-		Finally, IntFlow provides three 
+		When applied to SPEC CPU2000, IntFlow was able to reduce the
+		reports of developer-intended violations by approximately 89%
+		while maintaning all critical arithmetic error reports.
+		Additionally, when applied to real-world applications
+		(including image processing tools, web browsers and chat
+		clients) with benign inputs, it suppressed the error reports by
+		75%.
+		<br />
+		<br />
+		<img src="img/intflow_res.png" class="center">
+		<br />
 		</p>
+		<p>IntFlow was <a href="#publications">published</a> in ACSAC 2014 and its code is <a href="https://github.com/nettrino/IntFlow">publicly available</a>.
 	 </div>
   </div>
 
