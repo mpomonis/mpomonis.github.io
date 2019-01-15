@@ -6,6 +6,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <style>
+img.resize {
+	max-width:50%;
+	max-height:50%;
+}
+</style>
+<style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
@@ -17,7 +23,7 @@ body {font-size:16px;}
 <nav class="w3-sidebar w3-blue-gray w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
   <div class="w3-container">
-    <img src="img/zakynthos.jpg" />
+    <img class="resize" src="img/zakynthos.jpg"  />
     <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
   </div>
   <div class="w3-bar-block">
@@ -31,8 +37,8 @@ body {font-size:16px;}
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+<header class="w3-container w3-top w3-hide-large w3-blue-gray w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-blue-gray w3-margin-right" onclick="w3_open()">☰</a>
   <span>Company Name</span>
 </header>
 
