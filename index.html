@@ -15,6 +15,17 @@ img.center {
 	margin-left: auto;
 	margin-right: auto;
 }
+img.grayhover {
+	transition: all 0.5s ease;
+	-webkit-filter: grayscale(0%);
+	filter: grayscale(0%);
+	-moz-filter: grayscale(0%);
+}
+img.grayhover:hover {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+}
 </style>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
@@ -84,8 +95,8 @@ body {font-size:16px;}
   <!-- Project list -->
   <div class="w3-row-padding">
     <div class="w3-col m4 w3-margin-bottom">
-	<div class="w3-light-grey" style="cursor:pointer;" onclick="window.location='#krx';" onhover="filter: grayscale(100);" >
-        <img src="img/krx_sfi_mpx.png" alt="kR^X" style="width:100%">
+	<div class="w3-light-grey" style="cursor:pointer;" onclick="window.location='#krx';" >
+        <img src="img/krx_sfi_mpx.png" alt="kR^X" style="width:100%" class="grayhover">
         <div class="w3-container">
           <h3>kR^X</h3>
           <p>kR^X is a protection system that protects the kernel against code reuse exploits in a self-protection manner. It is based on compiler-assisted code instrumentation and code diversification.</p>
