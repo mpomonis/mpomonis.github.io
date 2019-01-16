@@ -129,7 +129,7 @@ body {font-size:16px;}
 		space.
 		<br />
 		<br />
-		<img src="img/krx_kas_amd64.png" class="w3-image" >
+		<img src="img/krx_kas_amd64.png" class="w3-image center" >
 		<br />
 		<br />
 		It then utilizes the GCC plugin interface to instrument every memory read with
@@ -140,7 +140,7 @@ body {font-size:16px;}
 		Moreover, on modern Intel CPUs kR^X takes advantage of Intel MPX, to further reduce the runtime overhead of the instrumentation. 
 		<br />
 		<br />
-		<img src="img/krx_sfi_mpx.png" class="w3-image"> <!-- width="750" height="356" -->
+		<img src="img/krx_sfi_mpx.png" class="w3-image center"> <!-- width="750" height="356" -->
 		<br />
 		<br />
 		The above guarantee that an attacker is unable to read the kernel code section and identify the addresses of gadgets, effectively preventing them from constructing exploits on-the-fly.
@@ -154,7 +154,7 @@ body {font-size:16px;}
 		kR^X incurs small runtime overhead on real world applications, which ranges from 4.04% on legacy CPUs to 2.32% when MPX is available. The following table reports the runtime overhead of the SFI-inspired instrumentation (SFI), the MPX-based instrumentation (MPX), and the respective instrumentations in addition to the code diversification and return address encryption (SFI+X, MPX+X), and in addition to the code diversification and return address deception (SFI+D, MPX+D).
 		<br />
 		<br />
-		<img src="img/krx_runtime.png" class="w3-image">
+		<img src="img/krx_runtime.png" class="w3-image center">
 		</p>
 		<p>
 		kR^X was <a href="#publications">published</a> in EuroSys 2017 and an extended version of it (including how to employ the x86 segmentation unit to enforce the Execute-Only primitive) will be published in TOPS. The code of kR^X is <a href="https://github.com/mpomonis/krx">publicly available</a>.
@@ -166,7 +166,7 @@ body {font-size:16px;}
   <div class="w3-container" id="ksplitstack" style="margin-top:75px">
 	  <div class="w3-light-grey">
 		<h2 class="w3-xxxlarge w3-text-blue-gray">kSplitStack</h2>
-		<img src="img/ksplitstack.png" style="width:100%" >
+		<img src="img/ksplitstack.png" style="w3-image" >
 		<p>
 		kSplitStack thwarts the construction of kernel code reuse exploits by "hiding" kernel code pointers.
 		The fundamental concept of kSplitStack is the <em>protected region</em>, a part of the address space
