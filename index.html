@@ -97,7 +97,7 @@ body {font-size:16px;}
         <img src="img/ksplitstack.png" alt="kSplitStack" style="width:24%; height=24%" class=center>
         <div class="w3-container">
           <h3>kSplitStack</h3>
-          <p>kSplitStack is a protection systems that prevents attackers from leaking or corrupting kernel code pointers. It relies on compiler-assisted code instrumentation and repurposing hardware features.</p>
+          <p>kSplitStack is a protection systems that prevents attackers from leaking or corrupting kernel code pointers. It relies on static code instrumentation and repurposing hardware features.</p>
         </div>
       </div>
     </div>
@@ -113,10 +113,8 @@ body {font-size:16px;}
   </div>
 
   <!-- kR^X -->
-  <div class="w3-row-padding">
-  <div class="w3-col m4 w3-margin-bottom" id="krx" style="margin-top:75px">
+  <div class="w3-container" id="krx" style="margin-top:75px">
 	  <div class="w3-light-grey">
-		<div class="w3-container">
 		<h2 class="w3-xxxlarge w3-text-blue-gray">kR^X</h2>
 		<p>
 		The OS kernel has always been a compelling target for attackers. After the introduction of defenses (e.g., SMEP, SMAP) that prevent the use of exploits based on the ret2usr methodology, attackers were forced to 
@@ -131,8 +129,7 @@ body {font-size:16px;}
 		space.
 		<br />
 		<br />
-		<img src="img/krx_kas_amd64.png">
-		<!-- img src="img/krx_kas_amd64.png" class="center" -->
+		<img src="img/krx_kas_amd64.png" class="center" >
 		<br />
 		<br />
 		It then utilizes the GCC plugin interface to instrument every memory read with
@@ -163,8 +160,6 @@ body {font-size:16px;}
 		kR^X was <a href="#publications">published</a> in EuroSys 2017 and an extended version of it (including how to employ the x86 segmentation unit to enforce the Execute-Only primitive) will be published in TOPS. The code of kR^X is <a href="https://github.com/mpomonis/krx">publicly available</a>.
 		</p>
 	  </div>
-	  </div>
-  </div>
   </div>
 
   <!-- kSplitStack -->
