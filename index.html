@@ -6,22 +6,23 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <style>
-img.resize {
-	max-width:90%;
-	max-height:90%;
-}
 img.center {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
-img.grayhover {
+
+
+.projbox:hover div {
+    background-color: #aaa;
+}
+.projbox img {
 	transition: all 0.5s ease;
 	-webkit-filter: grayscale(0%);
 	filter: grayscale(0%);
 	-moz-filter: grayscale(0%);
 }
-img.grayhover:hover {
+.projbox:hover img {
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
 	-moz-filter: grayscale(100%);
@@ -29,8 +30,9 @@ img.grayhover:hover {
 
 .frame {
     height: 200px;
-    width: 98%;
+    width: 100%;
     /* border: 1px solid red; */
+    margin-top: 1em;
     white-space: nowrap;
     text-align: center;
 }
@@ -45,6 +47,7 @@ img.grayhover:hover {
     vertical-align: middle;
     max-height: 200px;
     max-width: 100%;
+    margin-left: -5px;
 }
 
 
@@ -61,7 +64,7 @@ body {font-size:16px;}
 <nav class="w3-sidebar w3-blue-gray w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
   <div class="w3-container">
-    <img class="resize" src="img/zakynthos.jpg"  />
+    <img src="img/zakynthos.jpg" style="width:100%" />
     <h3 class="w3-padding-64"><b>Marios<br>Pomonis</b></h3>
   </div>
   <div class="w3-bar-block">
@@ -117,40 +120,40 @@ body {font-size:16px;}
   <!-- Project list -->
   <div class="w3-row-padding">
     <div class="w3-col m4 w3-margin-bottom">
-	<div class="w3-light-grey" style="cursor:pointer;" onclick="window.location='#krx';" >
-        <div class="frame">
-            <span class="helper"></span>
-            <img src="img/krx_sfi_mpx.png" alt="kR^X" style="width:100%" class="grayhover">
-        </div>
+	<div class="w3-light-grey projbox" style="cursor:pointer;" onclick="window.location='#krx';" >
         <div class="w3-container">
-          <h3>kR^X</h3>
-          <p>kR^X is a protection system that protects the kernel against code reuse exploits in a self-protection manner. It is based on compiler-assisted code instrumentation and code diversification.</p>
+            <div class="frame">
+                <span class="helper"></span>
+                <img src="img/krx_sfi_mpx.png" alt="kR^X" style="width:100%" class="grayhover">
+            </div>
+            <h3>kR^X</h3>
+            <p>kR^X is a protection system that protects the kernel against code reuse exploits in a self-protection manner. It is based on compiler-assisted code instrumentation and code diversification.</p>
         </div>
 	</div>
     </div>
     <div class="w3-col m4 w3-margin-bottom">
-	<div class="w3-light-grey" style="cursor: pointer;" onclick="window.location='#ksplitstack';">
-        <div class="frame">
-            <span class="helper"></span>
-            <img src="img/ksplitstack.png" alt="kSplitStack" class="grayhover">
-        </div>
+	<div class="w3-light-grey projbox" style="cursor: pointer;" onclick="window.location='#ksplitstack';">
         <div class="w3-container">
-          <h3>kSplitStack</h3>
-          <p>kSplitStack is a protection systems that prevents attackers from leaking or corrupting kernel code pointers. It relies on static code instrumentation and repurposing hardware features.</p>
+            <div class="frame">
+                <span class="helper"></span>
+                <img src="img/ksplitstack.png" alt="kSplitStack" class="grayhover">
+            </div>
+            <h3>kSplitStack</h3>
+            <p>kSplitStack is a protection systems that prevents attackers from leaking or corrupting kernel code pointers. It relies on static code instrumentation and repurposing hardware features.</p>
         </div>
-      </div>
+    </div>
     </div>
     <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey" style="cursor: pointer;" onclick="window.location='#intflow';">
-        <div class="frame">
-            <span class="helper"></span>
-            <img src="img/intflow.png" alt="IntFlow" class="grayhover">
-        </div>
+    <div class="w3-light-grey projbox" style="cursor: pointer;" onclick="window.location='#intflow';">
         <div class="w3-container">
-          <h3>IntFlow</h3>
-          <p>IntFlow is a compiler extension that distinguishes real &mdash;potentially exploitable&mdash; bugs from benign, programmer-intended integer error reports. It employs static information flow tracking.</p>
+            <div class="frame">
+                <span class="helper"></span>
+                <img src="img/intflow.png" alt="IntFlow" class="grayhover">
+            </div>
+            <h3>IntFlow</h3>
+            <p>IntFlow is a compiler extension that distinguishes real &mdash;potentially exploitable&mdash; bugs from benign, programmer-intended integer error reports. It employs static information flow tracking.</p>
         </div>
-      </div>
+    </div>
     </div>
   </div>
 
